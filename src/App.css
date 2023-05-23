@@ -40,3 +40,25 @@
 .read-the-docs {
   color: #888;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.option0 {
+  display:none;
+}
+
+.pizza-div{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

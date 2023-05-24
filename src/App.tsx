@@ -1,13 +1,18 @@
-import Form from './components/Form'
+import Form from "./components/Form";
 
 function App() {
-
   return (
-   <div className='py-24 px-12 flex flex-col gap-8 justify-center items-center h-[85vh]'>
-    <h1 className='text-5xl p-8 rounded-xl bg-white bg-opacity-75 font-bold'>HexOcean dish form:</h1>
-    <Form />
-   </div>
-  )
+    <div className="">
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <h1 className="text-5xl font-bold">HexOceanDishForm</h1>
+            <Form />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

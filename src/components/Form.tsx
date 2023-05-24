@@ -64,7 +64,7 @@ export default function Form() {
           })}
         />
         <label className="label">
-          <span className="label-text-alt">
+          <span className="label-text-alt text-error">
             <ErrorMessage errors={errors} name="name" />
           </span>
         </label>
@@ -94,7 +94,7 @@ export default function Form() {
           })}
         />
         <label className="label">
-          <span className="label-text-alt">
+          <span className="label-text-alt text-error">
             <ErrorMessage errors={errors} name="preparation_time" />
           </span>
         </label>
@@ -170,7 +170,7 @@ export default function Form() {
                 })}
               />
               <label className="label">
-                <span className="label-text-alt">
+                <span className="label-text-alt text-error">
                   <ErrorMessage errors={errors} name="no_of_slices" />
                 </span>
               </label>
@@ -196,7 +196,7 @@ export default function Form() {
                 })}
               />
               <label className="label">
-                <span className="label-text-alt">
+                <span className="label-text-alt text-error">
                   <ErrorMessage errors={errors} name="diameter" />
                 </span>
               </label>
@@ -260,7 +260,7 @@ export default function Form() {
               })}
             />
             <label className="label">
-              <span className="label-text-alt">
+              <span className="label-text-alt text-error">
                 <ErrorMessage errors={errors} name="slices_of_bread" />
               </span>
             </label>

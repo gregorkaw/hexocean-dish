@@ -46,40 +46,56 @@ export default function Form() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-4 justify-center items-center p-12 w-[75%] h-[50%] bg-white rounded-xl text-black"
+      className="flex flex-col py-12 container w-[25%] min-h-full justify-between items-center bg-white rounded-xl bg-opacity-50"
     >
+        
       <div className="flex flex-col">
+        
         <div className="p-4 flex gap-8">
           <input
+            className="p-2 rounded-xl"
             type="text"
-            placeholder="name"
-            {...register("name", { required: "Please provide a name", minLength: {value:3, message:"The name needs to be at least 3 characters"} })}
+            placeholder="Add dish name:"
+            {...register("name", {
+              required: "Please provide a name",
+              minLength: {
+                value: 3,
+                message: "The name needs to be at least 3 characters",
+              },
+            })}
           />
           <ErrorMessage errors={errors} name="name" />
         </div>
         <div className="p-4 flex gap-8">
+          
           <input
+            className="p-2 rounded-xl"
             type="text"
-            placeholder="preparation_time"
+            placeholder="Preparation time:"
             max={8}
             {...register("preparation_time", {
-              required: { value: true, message: "prep time is required" },
+              required: {
+                value: true,
+                message: "Please provide a preparation time",
+              },
               pattern: {
                 value: /[0-9]{2}:[0-9]{2}:[0-9]{2}/i,
-                message: "Please provide an correct input 00:00:00",
+                message: "Please provide a correct format: hh:mm:ss",
               },
               maxLength: {
                 value: 8,
-                message: "Please provide an correct input 00:00:00",
+                message: "Please provide a correct format: hh:mm:ss",
               },
             })}
           />
           <ErrorMessage errors={errors} name="preparation_time" />
         </div>
-        <div className="p-4 flex gap-8 justify-center items-center">
+        <div className="p-4 flex flex-col gap-2 justify-center">
+          <p className="text-black text-lg">Dish type:</p>
           <select
+            className="p-2 rounded-xl"
             {...register("type", {
-              required: { value: true, message: "Please Select An option" },
+              required: true
             })}
             onChange={(e) => {
               {
@@ -121,35 +137,39 @@ export default function Form() {
           </select>
           <ErrorMessage errors={errors} name="type" />
         </div>
+        <p className="text-lg text-center p-6">Additional choices:</p>
       </div>
-      <div>
+
+      <div className="h-[25%]">
         {isPizza ? (
           <div className="flex flex-col">
             <div className="p-4 flex gap-8">
               <input
+                className="p-2 rounded-xl"
                 type="number"
                 placeholder="no_of_slices"
                 {...register("no_of_slices", {
                   required: {
                     value: isPizza ? true : false,
-                    message: "please set a number",
+                    message: "Please provide a value",
                   },
-                  min: { value: 1, message: "pleace" },
+                  min: { value: 1, message: "The amount needs to be more than 0" },
                 })}
               />
               <ErrorMessage errors={errors} name="no_of_slices" />
             </div>
             <div className="p-4 flex gap-8">
               <input
+                className="p-2 rounded-xl"
                 type="number"
                 step={0.01}
                 placeholder="diameter"
                 {...register("diameter", {
                   required: {
                     value: isPizza ? true : false,
-                    message: "please set a number",
+                    message: "Please provide a value",
                   },
-                  min: { value: 0.01, message: "pleace" },
+                  min: { value: 0.01, message: "The amount needs to be more than 0" },
                 })}
               />
               <ErrorMessage errors={errors} name="diameter" />
@@ -159,9 +179,10 @@ export default function Form() {
           ""
         )}
         {isSoup ? (
-          <div className="p-4 flex flex-col gap-8">
+          <div className="flex flex-col">
             <p>How spicy would you like it?</p>
             <input
+              className="p-2"
               type="range"
               min="0"
               max="10"
@@ -178,14 +199,15 @@ export default function Form() {
         {isSandwich ? (
           <div className="p-4 flex gap-8">
             <input
+              className="p-2 rounded-xl"
               type="number"
               placeholder="slices_of_bread"
               {...register("slices_of_bread", {
                 required: {
                   value: isSandwich ? true : false,
-                  message: "please choose a number of slices of bread",
+                  message: "Please provide a number of breadslices",
                 },
-                min: { value: 1, message: "pleace" },
+                min: { value: 1, message: "The amount needs to be more than 0" },
               })}
             />
             <ErrorMessage errors={errors} name="slices_of_bread" />
@@ -194,7 +216,7 @@ export default function Form() {
           ""
         )}
       </div>
-      <input type="submit" value="Submit"/>
+      <input type="submit" value="Submit" />
     </form>
   );
 }

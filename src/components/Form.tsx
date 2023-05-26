@@ -13,7 +13,7 @@ interface IFormInputs {
 }
 
 export default function Form() {
-  const [isPizza, setIsPizza] = useState(false);
+  const [isPizza, setIsPizza] = useState(true);
   const [isSoup, setIsSoup] = useState(false);
   const [isSandwich, setIsSandwich] = useState(false);
   const [isSucces, setIsSucces] = useState(false);
@@ -90,18 +90,19 @@ export default function Form() {
             maxLength: {
               value: 8,
               message: "Please provide a correct format: hh:mm:ss",
-            },
+            }
           })}
         />
         <label className="label">
           <span className="label-text-alt text-error">
-            <ErrorMessage errors={errors} name="preparation_time" />
+            <ErrorMessage errors={errors} name="preparation_time" render={({ message }) => <p>{message}</p>}/>
           </span>
         </label>
       </div>
 
       <select
         className="select select-bordered w-full max-w-xs"
+        defaultValue="pizza"
         {...register("type", {
           required: true,
         })}
@@ -139,12 +140,10 @@ export default function Form() {
           }
         }}
       >
-        <option disabled selected className="font-bold">
-          Choose a dish type
-        </option>
         <option value="pizza">Pizza</option>
         <option value="soup">Soup</option>
         <option value="sandwich">Sandwich</option>
+        
       </select>
 
       <div className="">
@@ -269,8 +268,8 @@ export default function Form() {
           ""
         )}
       </div>
-      <input className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg mt-4 w-24" type="submit" value="Submit" />
-      {isSucces ? <div>Success!</div> : ""}
+      <input className="btn btn-sm" type="submit" value="Submit" />
+      {isSucces ? <div className="mt-6 text-success">Success!</div> : ""}
     </form>
   );
 }

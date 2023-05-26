@@ -220,7 +220,7 @@ export default function Form() {
                 required: isSoup ? true : false,
               })}
             />
-            <div className="w-full flex justify-between text-xs px-2">
+            <div className="w-full flex justify-between text-xs px-2 mb-6 ">
               <span>|</span>
               <span>|</span>
               <span>|</span>
